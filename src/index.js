@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import SeasonDisplay from "./SeasonDisplay.js";
+// import './SeasonDisplay.css';
+import Loading from './Loading.js';
 
 
 
@@ -24,7 +26,9 @@ class App extends React.Component {
                 return <SeasonDisplay lat={this.state.lat} />
            } 
 
-           return <div>Loading... Please Wait</div>
+           return (
+            <Loading />
+           )
         
     }
 }
