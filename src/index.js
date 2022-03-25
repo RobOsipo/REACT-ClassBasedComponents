@@ -17,18 +17,26 @@ class App extends React.Component {
         )
    }
 
+   renderContent() {
+    if (this.state.errorMessage && !this.state.lat) {
+        return <div>Error: {this.state.errorMessage}</div>
+    } 
+     if (!this.state.errorMessage && this.state.lat) {
+         return <SeasonDisplay lat={this.state.lat} />
+    } 
+
+    return (
+     <Loading message="Please Wait while we fetch your location" />
+    )
+   }
+
     render() {
        
-           if (this.state.errorMessage && !this.state.lat) {
-               return <div>Error: {this.state.errorMessage}</div>
-           } 
-            if (!this.state.errorMessage && this.state.lat) {
-                return <SeasonDisplay lat={this.state.lat} />
-           } 
-
-           return (
-            <Loading />
-           )
+         return (
+             <div>
+                 {this.renderContent()}
+             </div>
+         )
         
     }
 }
